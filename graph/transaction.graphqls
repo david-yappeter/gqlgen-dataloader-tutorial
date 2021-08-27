@@ -1,0 +1,22 @@
+type Transaction {
+    id: ID!
+    created_at: Time!
+    user_id: ID!
+    summary: TransactionSummary! @goField(forceResolver: true)
+    # Force it's resolver to come out
+}
+
+type TransactionSummary {
+    total_price: Float!
+    total_discount: Float
+    transaction_details: [TransactionDetail!]!
+}
+
+input NewTransaction {
+    user_id: ID!
+    transaction_details: [NewTransactionDetail!]!
+}
+
+type TransactionOps {
+    create(input: NewTransaction!): Transaction! @goField(forceResolver: true)
+}

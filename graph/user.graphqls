@@ -1,0 +1,16 @@
+type User {
+    id: ID!
+    name: String!
+    age: Int!
+    transactions: [Transaction!]! @goField(forceResolver: true) 
+    # We make this 'transactions' into goField to force it execute in another resolver than in the User Object Itself
+}
+
+input NewUser {
+    name: String!
+    age: Int!
+}
+
+type UserOps {
+    create(input: NewUser!): User! @goField(forceResolver: true)
+}

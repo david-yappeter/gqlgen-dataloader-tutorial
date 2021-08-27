@@ -1,0 +1,21 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+# build-in directive by Gqlgen
+directive @goField(forceResolver: Boolean, name: String) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+# build-in scalar
+scalar Time
+
+
+type Query {
+  users: [User!]! @goField(forceResolver: true)
+  transactions: [Transaction!]! @goField(forceResolver: true)
+  transaction_details: [TransactionDetail!]! @goField(forceResolver: true)
+}
+
+type Mutation {
+  user: UserOps! @goField(forceResolver: true)
+  transaction: TransactionOps! @goField(forceResolver: true)
+}

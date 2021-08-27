@@ -1,0 +1,15 @@
+type TransactionDetail {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    discount: Float
+    transaction_id: ID!
+}
+
+input NewTransactionDetail {
+    name: String!
+    description: String
+    price: Float!
+    discount: Float
+}
